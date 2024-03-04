@@ -1,6 +1,6 @@
 ﻿
 
-using LeetCode100226;
+using LeetCode100246;
 
 var solution = new Solution();
 solution.Run();
