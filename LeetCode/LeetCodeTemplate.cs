@@ -4,7 +4,7 @@ public class Solution
 {
     public void Run()
     {
-        // var param = ...
+        // var param = ...;
         // var result = YourMethod(param);
     }
 }
