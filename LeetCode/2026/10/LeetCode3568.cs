@@ -1,16 +1,19 @@
-using LeetCode.Common;
+using Xunit;
 
 namespace LeetCode3568;
 
+public class SolutionTests
+{
+    [Theory]
+    [InlineData(new[] { "S.", "XL" }, 2, 2)]
+    [InlineData(new[] { "LS", "RL" }, 4, 3)]
+    [InlineData(new[] { "L.S", "RXL" }, 3, -1)]
+    public void MinMoves(string[] classroom, int energy, int expected) =>
+        Assert.Equal(expected, new Solution().MinMoves(classroom, energy));
+}
+
 public class Solution
 {
-    public void Run()
-    {
-        TestCase.Check(MinMoves(["S.", "XL"], 2), 2);
-        TestCase.Check(MinMoves(["LS", "RL"], 4), 3);
-        TestCase.Check(MinMoves(["L.S", "RXL"], 3), -1);
-    }
-
     public int MinMoves(string[] classroom, int energy)
     {
         var rows = classroom.Length;
