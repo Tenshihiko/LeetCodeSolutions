@@ -1,8 +1,10 @@
+using LeetCode.Common;
 using Xunit;
 
 namespace LeetCode3568;
 
-public class SolutionTests
+[Folder]
+public class Tests
 {
     [Theory]
     [InlineData(new[] { "S.", "XL" }, 2, 2)]

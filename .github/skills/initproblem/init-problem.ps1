@@ -57,16 +57,10 @@ $snippet = $problem.codeSnippets | Where-Object { $_.langSlug -eq 'csharp' } | S
 if ($snippet -and $snippet -match '(?m)^\s*(public [^\r\n]+\))\s*\{') {
     $signature = $Matches[1].Trim()
     $method = "    $signature`r`n    {`r`n        throw new NotImplementedException();`r`n    }`r`n"
-    $content = $content -replace '(?s)(public void Run\(\)\s*\{.*?\r?\n    \}\r?\n)', "`$1`r`n$method"
+    $content = $content -replace '(?m)(^public class Solution\r?\n\{\r?\n)', "`$1$method"
 }
 Set-Content -Path $targetFile -Value $content -NoNewline -Encoding utf8
 Write-Host "Created file: $targetFile"
-
-$programPath = Join-Path $projectDir 'Program.cs'
-$program = Get-Content -Path $programPath -Raw
-$program = $program -replace '(?m)^using\s+LeetCode\w*\s*;', "using $name;"
-Set-Content -Path $programPath -Value $program -NoNewline -Encoding utf8
-Write-Host "Updated Program.cs: using $name;"
 
 if ($problem) {
     $text = [System.Net.WebUtility]::HtmlDecode(($problem.content -replace '<[^>]+>', ''))

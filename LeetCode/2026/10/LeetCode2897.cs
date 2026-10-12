@@ -1,15 +1,21 @@
-﻿namespace LeetCode2897;
+using LeetCode.Common;
+using Xunit;
+
+namespace LeetCode2897;
+
+[Folder]
+public class Tests
+{
+    [Theory]
+    [InlineData(new[] { 2, 6, 5, 8 }, 2, 261)]
+    [InlineData(new[] { 4, 5, 4, 7 }, 3, 90)]
+    [InlineData(new[] { 3, 5, 6 }, 3, 98)]
+    public void MaxSum(int[] nums, int k, int expected) =>
+        Assert.Equal(expected, new Solution().MaxSum(nums, k));
+}
 
 public class Solution
 {
-    public void Run()
-    {
-        var nums = new List<int> { 3, 5, 6 };
-        var k = 3;
-        var result = MaxSum(nums, k);
-        Console.WriteLine(result); // Output: 98
-    }
-
     public int MaxSum(IList<int> nums, int k)
     {
         var bits = new int[30];
