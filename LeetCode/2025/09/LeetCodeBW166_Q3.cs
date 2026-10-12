@@ -1,4 +1,18 @@
-﻿namespace LeetCodeBW166_Q3;
+﻿using LeetCode.Common;
+using Xunit;
+
+namespace LeetCodeBW166_Q3;
+
+[Folder]
+public class Tests
+{
+    [Fact]
+    public void Examples()
+    {
+        var solution = new Solution();
+        var result = solution.DistinctPoints("DURLU", 2);
+    }
+}
 
 public class Solution
 {
@@ -29,11 +43,6 @@ Output: 2
 Explanation:
 
 After removing a substring of length 1, s can be "UL", "LL" or "LU". Following these moves, the final coordinates will be (-1, 1), (-2, 0) and (-1, 1) respectively. There are two distinct points (-1, 1) and (-2, 0) so the answer is 2.©leetcode*/
-    public void Run()
-    {
-        var result = DistinctPoints("DURLU", 2);
-    }
-
     public int DistinctPoints(string s, int k)
     {
         var points = new HashSet<(int, int)>();
@@ -73,4 +82,3 @@ After removing a substring of length 1, s can be "UL", "LL" or "LU". Following t
         return points.Count;
     }
 }
-

@@ -1,14 +1,23 @@
-﻿namespace LeetCode3027;
+﻿using LeetCode.Common;
+using Xunit;
+
+namespace LeetCode3027;
+
+[Folder]
+public class Tests
+{
+    [Fact]
+    public void Examples()
+    {
+        var solution = new Solution();
+        int[][] points = [[6, 2], [4, 4], [2, 6]];
+
+        var result = solution.NumberOfPairs(points);
+    }
+}
 
 public class Solution
 {
-    public void Run()
-    {
-        int[][] points = [[6, 2], [4, 4], [2, 6]];
-
-        var result = NumberOfPairs(points);
-    }
-
     private int N = 0;
 
     public int NumberOfPairs(int[][] points)
@@ -41,4 +50,3 @@ public class Solution
         return ans;
     }
 }
-

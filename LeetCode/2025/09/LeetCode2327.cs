@@ -1,13 +1,22 @@
-﻿namespace LeetCode2327;
+﻿using LeetCode.Common;
+using Xunit;
+
+namespace LeetCode2327;
+
+[Folder]
+public class Tests
+{
+    [Fact]
+    public void Examples()
+    {
+        var solution = new Solution();
+        // var param = ...
+        var result = solution.PeopleAwareOfSecret(1000, 1, 1000);
+    }
+}
 
 public class Solution
 {
-    public void Run()
-    {
-        // var param = ...
-        var result = PeopleAwareOfSecret(1000, 1, 1000);
-    }
-
     public int PeopleAwareOfSecret(int n, int delay, int forget)
     {
         var dp = new int[n + 1, forget];
@@ -35,4 +44,3 @@ public class Solution
         return result;
     }
 }
-

@@ -1,15 +1,20 @@
-﻿
+﻿using LeetCode.Common;
+using Xunit;
 
 namespace LeetCode15;
 
 // TODO optimize
+[Folder]
+public class Tests
+{
+    // [Theory]
+    // [InlineData(param1, param2, expected)]
+    // public void Method(int param1, int param2, int expected) =>
+    //     Expect.Equal(expected, new Solution().Method(param1, param2));
+}
+
 public class Solution
 {
-    public void Run()
-    {
-        // var param = ...;
-        // var result = YourMethod(param);
-    }
     public IList<IList<int>> ThreeSum(int[] nums)
     {
         var count = new Dictionary<int, int>();
@@ -72,4 +77,3 @@ public class Solution
         }
     }
 }
-

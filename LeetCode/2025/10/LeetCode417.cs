@@ -1,14 +1,22 @@
-﻿
+﻿using LeetCode.Common;
+using Xunit;
+
 namespace LeetCode417;
+
+[Folder]
+public class Tests
+{
+    [Fact]
+    public void Examples()
+    {
+        var solution = new Solution();
+        // var param = ...;
+        var result = solution.PacificAtlantic([[1, 2, 2, 3, 5], [3, 2, 3, 4, 4], [2, 4, 5, 3, 1], [6, 7, 1, 4, 5], [5, 1, 1, 2, 4]]);
+    }
+}
 
 public class Solution
 {
-    public void Run()
-    {
-        // var param = ...;
-        var result = PacificAtlantic([[1, 2, 2, 3, 5], [3, 2, 3, 4, 4], [2, 4, 5, 3, 1], [6, 7, 1, 4, 5], [5, 1, 1, 2, 4]]);
-    }
-
     private int N;
     private int M;
 
@@ -72,4 +80,3 @@ public class Solution
         return result;
     }
 }
-

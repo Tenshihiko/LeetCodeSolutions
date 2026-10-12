@@ -1,13 +1,22 @@
-﻿namespace LeetCodeBW166_Q1;
+﻿using LeetCode.Common;
+using Xunit;
+
+namespace LeetCodeBW166_Q1;
+
+[Folder]
+public class Tests
+{
+    [Fact]
+    public void Examples()
+    {
+        var solution = new Solution();
+        int[] param = [1,2,3,4];
+        var result = solution.ClimbStairs(param.Length, param);
+    }
+}
 
 public class Solution
 {
-    public void Run()
-    {
-        int[] param = [1,2,3,4];
-        var result = ClimbStairs(param.Length, param);
-    }
-
     public int ClimbStairs(int n, int[] costs)
     {
         Recursion(costs, 0, 0);
@@ -31,7 +40,6 @@ public class Solution
         Recursion(costs, index + 3, currentCost + (index + 3 >= costs.Length ? 0 : costs[index + 3]) + 9);
     }
 
-
     public string MajorityFrequencyGroup(string s)
     {
         var freq = new Dictionary<char, int>();
@@ -48,10 +56,7 @@ public class Solution
         var grouped = freq.GroupBy(x => x.Value).OrderByDescending(x => x.Key);
         var maxGroup = grouped.Max(x => x.Count());
 
-
-
         var result = grouped.First(x => x.Count() == maxGroup).Select(grouped => grouped.Key);
         return new string(result.ToArray());
     }
 }
-

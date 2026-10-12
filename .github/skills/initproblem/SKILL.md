@@ -57,6 +57,6 @@ Rules:
 - For `double` results use `Assert.Equal(expected, actual, 5)`.
 - If the problem accepts any order of answer, sort the result before asserting and mention it in a comment.
 - If the class uses a design-style problem (`metaData` has `classname`/`methods`), write a `[Fact]` per example with the sequence of calls and asserts done manually.
-- Do not modify `Program.cs`.
+- For results that are hard to express in `Assert.Equal` (jagged arrays, `IList<IList<int>>`, `ListNode`), use `Expect.Equal(expected, actual)` from `LeetCode/Common/Expect.cs`: it compares LeetCode-like text representations, so collection types may differ. If the correct answer is unknown, pass `Expect.Any` as expected (any result is accepted).
 
 After running, build the `LeetCode` project, run the created tests and report the created file path to the user.

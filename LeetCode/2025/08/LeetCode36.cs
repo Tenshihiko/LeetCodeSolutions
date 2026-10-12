@@ -1,16 +1,21 @@
-﻿using System;
+﻿using LeetCode.Common;
+using Xunit;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LeetCode36
+namespace LeetCode36;
+
+[Folder]
+public class Tests
 {
-    public class Solution
+    [Fact]
+    public void Examples()
     {
-        public void Run()
-        {
-            char[][] board = 
+        var solution = new Solution();
+        char[][] board = 
 [['5','3','.','.','7','.','.','.','.']
 ,['6','.','.','1','9','5','.','.','.']
 ,['.','9','8','.','.','.','.','6','.']
@@ -21,35 +26,37 @@ namespace LeetCode36
 ,['.','.','.','4','1','9','.','.','5']
 ,['.','.','.','.','8','.','.','7','9']];
 
-            var result = IsValidSudoku(board);
-        }
+        var result = solution.IsValidSudoku(board);
+    }
+}
 
-        public bool IsValidSudoku(char[][] board)
+public class Solution
+{
+    public bool IsValidSudoku(char[][] board)
+    {
+        var used = new bool[9, 3, 9];
+
+        for (int i = 0; i < 9; i++)
         {
-            var used = new bool[9, 3, 9];
-
-            for (int i = 0; i < 9; i++)
+            for (int j = 0; j < 9; j++)
             {
-                for (int j = 0; j < 9; j++)
-                {
-                    var x = board[i][j] - '1';
-                    var b = i / 3 * 3 + j / 3;
+                var x = board[i][j] - '1';
+                var b = i / 3 * 3 + j / 3;
 
-                    if (x < 0)
-                        continue;
+                if (x < 0)
+                    continue;
 
-                    if (used[x, 0, i]
-                        || used[x, 1, j]
-                        || used[x, 2, b])
-                        return false;
+                if (used[x, 0, i]
+                    || used[x, 1, j]
+                    || used[x, 2, b])
+                    return false;
 
-                    used[x, 0, i] =
-                    used[x, 1, j] =
-                    used[x, 2, b] = true;
-                }
+                used[x, 0, i] =
+                used[x, 1, j] =
+                used[x, 2, b] = true;
             }
-
-            return true;
         }
+
+        return true;
     }
 }

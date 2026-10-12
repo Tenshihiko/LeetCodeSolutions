@@ -1,17 +1,26 @@
-﻿namespace LeetCode407;
+﻿using LeetCode.Common;
+using Xunit;
 
-public class Solution
+namespace LeetCode407;
+
+[Folder]
+public class Tests
 {
-    public void Run()
+    [Fact]
+    public void Examples()
     {
+        var solution = new Solution();
         // var param = ...;
-        //var result = TrapRainWater([[1, 4, 3, 1, 3, 2],
+        //var result = solution.TrapRainWater([[1, 4, 3, 1, 3, 2],
         //                            [3, 2, 1, 3, 2, 4],
         //                            [2, 3, 3, 2, 3, 1]]);
 
-        var result = TrapRainWater([[3, 3, 3, 3, 3], [3, 2, 2, 2, 3], [3, 2, 1, 2, 3], [3, 2, 2, 2, 3], [3, 3, 3, 3, 3]]);
+        var result = solution.TrapRainWater([[3, 3, 3, 3, 3], [3, 2, 2, 2, 3], [3, 2, 1, 2, 3], [3, 2, 2, 2, 3], [3, 3, 3, 3, 3]]);
     }
+}
 
+public class Solution
+{
     private int N;
     private int M;
 
@@ -122,4 +131,3 @@ public class Solution
         }
     }
 }
-

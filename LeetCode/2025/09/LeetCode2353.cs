@@ -1,13 +1,19 @@
-﻿namespace LeetCode2353;
+﻿using LeetCode.Common;
+using Xunit;
+
+namespace LeetCode2353;
+
+[Folder]
+public class Tests
+{
+    // [Theory]
+    // [InlineData(param1, param2, expected)]
+    // public void Method(int param1, int param2, int expected) =>
+    //     Expect.Equal(expected, new Solution().Method(param1, param2));
+}
 
 public class Solution
 {
-    public void Run()
-    {
-        // var param = ...;
-        // var result = YourMethod(param);
-    }
-
     public class FoodRatings
     {
 
@@ -54,4 +60,3 @@ public class Solution
         }
     }
 }
-

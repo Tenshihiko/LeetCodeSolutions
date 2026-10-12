@@ -1,13 +1,22 @@
-﻿namespace LeetCode3;
+﻿using LeetCode.Common;
+using Xunit;
+
+namespace LeetCode3;
+
+[Folder]
+public class Tests
+{
+    [Fact]
+    public void Examples()
+    {
+        var solution = new Solution();
+        var param = "dvdf";
+        var result = solution.LengthOfLongestSubstring(param);
+    }
+}
 
 public class Solution
 {
-    public void Run()
-    {
-        var param = "dvdf";
-        var result = LengthOfLongestSubstring(param);
-    }
-
     public int LengthOfLongestSubstring(string s)
     {
         var res = 0;
@@ -39,4 +48,3 @@ public class Solution
         return res;
     }
 }
-

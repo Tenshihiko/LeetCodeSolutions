@@ -1,15 +1,24 @@
-﻿namespace LeetCode3349;
+﻿using LeetCode.Common;
+using Xunit;
 
-public class Solution
+namespace LeetCode3349;
+
+[Folder]
+public class Tests
 {
-    public void Run()
+    [Fact]
+    public void Examples()
     {
+        var solution = new Solution();
         // var param = ...;
         // var result = YourMethod(param);
 
-        HasIncreasingSubarrays([-15, 19], 1);
+        solution.HasIncreasingSubarrays([-15, 19], 1);
     }
+}
 
+public class Solution
+{
     public bool HasIncreasingSubarrays(IList<int> nums, int k)
     {
         var n = nums.Count();
@@ -31,4 +40,3 @@ public class Solution
         return false;
     }
 }
-

@@ -1,13 +1,19 @@
-﻿namespace LeetCode2197;
+﻿using LeetCode.Common;
+using Xunit;
+
+namespace LeetCode2197;
+
+[Folder]
+public class Tests
+{
+    // [Theory]
+    // [InlineData(param1, param2, expected)]
+    // public void Method(int param1, int param2, int expected) =>
+    //     Expect.Equal(expected, new Solution().Method(param1, param2));
+}
 
 public class Solution
 {
-    public void Run()
-    {
-        // var param = ...;
-        // var result = YourMethod(param);
-    }
-
     public int[] ReplaceNonCoprimes(int[] nums)
     {
         var stack = new Stack<int>();
@@ -46,4 +52,3 @@ public class Solution
         return a;
     }
 }
-

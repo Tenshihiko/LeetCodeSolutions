@@ -1,4 +1,16 @@
-﻿namespace LeetCodeBW166_Q4;
+﻿using LeetCode.Common;
+using Xunit;
+
+namespace LeetCodeBW166_Q4;
+
+[Folder]
+public class Tests
+{
+    // [Theory]
+    // [InlineData(param1, param2, expected)]
+    // public void Method(int param1, int param2, int expected) =>
+    //     Expect.Equal(expected, new Solution().Method(param1, param2));
+}
 
 public class Solution
 {
@@ -26,12 +38,6 @@ The maximum alternating sum is achieved when nums is [2, 1, 3] or [3, 1, 2]. As 
 Swap nums[0] and nums[2]. nums is now [3, 2, 1].
 Swap nums[1] and nums[2]. nums is now [3, 1, 2].
 Swap nums[0] and nums[2]. nums is now [2, 1, 3].©leetcode*/
-    public void Run()
-    {
-        // var param = ...;
-        // var result = YourMethod(param);
-    }
-
     // TODO learn about used techniques
     
     private class DSU
@@ -160,4 +166,3 @@ Swap nums[0] and nums[2]. nums is now [2, 1, 3].©leetcode*/
         return maxAlternatingSum;
     }
 }
-

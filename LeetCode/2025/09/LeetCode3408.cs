@@ -1,13 +1,19 @@
-﻿namespace LeetCode3408;
+﻿using LeetCode.Common;
+using Xunit;
+
+namespace LeetCode3408;
+
+[Folder]
+public class Tests
+{
+    // [Theory]
+    // [InlineData(param1, param2, expected)]
+    // public void Method(int param1, int param2, int expected) =>
+    //     Expect.Equal(expected, new Solution().Method(param1, param2));
+}
 
 public class Solution
 {
-    public void Run()
-    {
-        // var param = ...;
-        // var result = YourMethod(param);
-    }
-
     public class TaskManager
     {
         PriorityQueue<int, (int priority, int id)> TaskQueue = new PriorityQueue<int, (int priority, int id)>(

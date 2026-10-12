@@ -1,29 +1,33 @@
 using System.Collections;
 using System.Globalization;
 using System.Text;
+using Xunit;
 
 namespace LeetCode.Common
 {
-    public static class TestCase
+    public static class Expect
     {
-        private const int MaxLength = 20;
-        private static int _counter;
+        /// <summary>
+        /// Pass as expected value when the correct answer is unknown: any result is accepted.
+        /// </summary>
+        public const string Any = "<any>";
 
-        public static void Check(object? actual, object? expected)
+        /// <summary>
+        /// Compares values by their LeetCode-like text representation, so collection types
+        /// (int[] vs IList&lt;int&gt;, jagged arrays, ListNode vs array) may differ.
+        /// </summary>
+        public static void Equal(object? expected, object? actual)
         {
-            _counter++;
-            var actualText = Format(actual);
-            var expectedText = Format(expected);
-            var passed = actualText == expectedText;
-
-            var line = $"Case {_counter}: {Truncate(actualText)} -> {(passed ? "PASS" : "FAIL")}";
-            if (!passed) line += $" (expected: {Truncate(expectedText)})";
-
-            var color = Console.ForegroundColor;
-            Console.ForegroundColor = passed ? ConsoleColor.Green : ConsoleColor.Red;
-            Console.WriteLine(line);
-            Console.ForegroundColor = color;
+            if (expected is string s && s == Any) return;
+            Assert.Equal(Format(expected), Format(actual));
         }
+
+        /// <summary>
+        /// Same as <see cref="Equal"/> with (actual, expected) order; without expected any result is accepted.
+        /// </summary>
+        public static void Check(object? actual) => Equal(Any, actual);
+
+        public static void Check(object? actual, object? expected) => Equal(expected, actual);
 
         public static string Format(object? value)
         {
@@ -52,8 +56,5 @@ namespace LeetCode.Common
                 default: return Convert.ToString(value, CultureInfo.InvariantCulture) ?? "null";
             }
         }
-
-        private static string Truncate(string text) =>
-            text.Length <= MaxLength ? text : text[..MaxLength] + "...";
     }
 }

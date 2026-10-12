@@ -1,13 +1,19 @@
-﻿namespace LeetCode4;
+﻿using LeetCode.Common;
+using Xunit;
+
+namespace LeetCode4;
+
+[Folder]
+public class Tests
+{
+    // [Theory]
+    // [InlineData(param1, param2, expected)]
+    // public void Method(int param1, int param2, int expected) =>
+    //     Expect.Equal(expected, new Solution().Method(param1, param2));
+}
 
 public class Solution
 {
-    public void Run()
-    {
-        // var param = ...
-        // var result = YourMethod(param);
-    }
-
     public double FindMedianSortedArrays(int[] nums1, int[] nums2)
     {
         int n1 = nums1.Length, n2 = nums2.Length;
@@ -66,4 +72,3 @@ public class Solution
         }
     }
 }
-

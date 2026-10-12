@@ -1,89 +1,96 @@
-﻿using System;
+﻿using LeetCode.Common;
+using Xunit;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LeetCode76
+namespace LeetCode76;
+
+[Folder]
+public class Tests
 {
-    public class Solution
+    [Fact]
+    public void Examples()
     {
-        public void Run()
+        var solution = new Solution();
+        Expect.Check(solution.MinWindow("ADOBECODEBANC", "ABC"));
+    }
+}
+
+public class Solution
+{
+    public string MinWindow(string s, string t)
+    {
+        var m = s.Length;
+        var n = t.Length;
+
+        var dict = new Dictionary<char, int>();
+        var notCovered = n;
+
+        foreach (var ch in t)
         {
-            Console.WriteLine(MinWindow("ADOBECODEBANC", "ABC"));
+            dict[ch] = dict.GetValueOrDefault(ch, 0) + 1;
         }
 
-        public string MinWindow(string s, string t)
+        var shortest = m + 1;
+
+        var start = -1;
+        var end = -1;
+
+        var i = -1;
+        var j = -1;
+        do
         {
-            var m = s.Length;
-            var n = t.Length;
-
-            var dict = new Dictionary<char, int>();
-            var notCovered = n;
-
-            foreach (var ch in t)
+            while (notCovered > 0 && j < m - 1)
             {
-                dict[ch] = dict.GetValueOrDefault(ch, 0) + 1;
-            }
+                j++;
 
-            var shortest = m + 1;
-
-            var start = -1;
-            var end = -1;
-
-            var i = -1;
-            var j = -1;
-            do
-            {
-                while (notCovered > 0 && j < m - 1)
+                if (dict.ContainsKey(s[j]))
                 {
-                    j++;
-
-                    if (dict.ContainsKey(s[j]))
+                    if (dict[s[j]] > 0)
                     {
-                        if (dict[s[j]] > 0)
-                        {
-                            notCovered--;
-                        }
-                        dict[s[j]]--;
+                        notCovered--;
                     }
+                    dict[s[j]]--;
                 }
+            }
 
-                if (notCovered > 0)
+            if (notCovered > 0)
+            {
+                break;
+            }
+
+            while (notCovered == 0 && i < j)
+            {
+                i++;
+
+                if (dict.ContainsKey(s[i]))
                 {
-                    break;
-                }
-
-                while (notCovered == 0 && i < j)
-                {
-                    i++;
-
-                    if (dict.ContainsKey(s[i]))
+                    if (dict[s[i]] >= 0)
                     {
-                        if (dict[s[i]] >= 0)
-                        {
-                            notCovered++;
-                        }
-                        dict[s[i]]++;
+                        notCovered++;
                     }
+                    dict[s[i]]++;
                 }
-
-                if (j - i + 1 < shortest)
-                {
-                    shortest = j - i + 1;
-                    start = i;
-                    end = j;
-                }
-            } while (i < m);
-
-            if (shortest == m + 1)
-            {
-                return "";
             }
-            else
+
+            if (j - i + 1 < shortest)
             {
-                return s.Substring(start, shortest);
+                shortest = j - i + 1;
+                start = i;
+                end = j;
             }
+        } while (i < m);
+
+        if (shortest == m + 1)
+        {
+            return "";
+        }
+        else
+        {
+            return s.Substring(start, shortest);
         }
     }
 }

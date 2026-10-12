@@ -1,12 +1,21 @@
-﻿namespace LeetCode1039;
+﻿using LeetCode.Common;
+using Xunit;
+
+namespace LeetCode1039;
+[Folder]
+public class Tests
+{
+    [Fact]
+    public void Examples()
+    {
+        var solution = new Solution();
+        // var param = ...;
+        var result = solution.MinScoreTriangulation([1, 3, 1, 4, 1, 5]);
+    }
+}
+
 public class Solution
 {
-    public void Run()
-    {
-        // var param = ...;
-        var result = MinScoreTriangulation([1, 3, 1, 4, 1, 5]);
-    }
-
     public int MinScoreTriangulation(int[] values)
     {
         int n = values.Length;

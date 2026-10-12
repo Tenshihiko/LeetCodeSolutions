@@ -1,13 +1,22 @@
-﻿namespace LeetCode2300;
+﻿using LeetCode.Common;
+using Xunit;
+
+namespace LeetCode2300;
+
+[Folder]
+public class Tests
+{
+    [Fact]
+    public void Examples()
+    {
+        var solution = new Solution();
+        // var param = ...;
+        var result = solution.SuccessfulPairs([3, 1, 2], [8, 5, 8], 16);
+    }
+}
 
 public class Solution
 {
-    public void Run()
-    {
-        // var param = ...;
-        var result = SuccessfulPairs([3, 1, 2], [8, 5, 8], 16);
-    }
-
     public int[] SuccessfulPairs(int[] spells, int[] potions, long success)
     {
         var result = new int[spells.Length];
@@ -43,4 +52,3 @@ public class Solution
         return left;
     }
 }
-

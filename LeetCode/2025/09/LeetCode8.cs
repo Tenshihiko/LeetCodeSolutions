@@ -1,13 +1,22 @@
-﻿namespace LeetCode8;
+﻿using LeetCode.Common;
+using Xunit;
+
+namespace LeetCode8;
+
+[Folder]
+public class Tests
+{
+    [Fact]
+    public void Examples()
+    {
+        var solution = new Solution();
+        var param = "-91283472332";
+        var result = solution.MyAtoi(param);
+    }
+}
 
 public class Solution
 {
-    public void Run()
-    {
-        var param = "-91283472332";
-        var result = MyAtoi(param);
-    }
-
     public int MyAtoi(string s)
     {
         if (s == "") return 0;
@@ -40,4 +49,3 @@ public class Solution
             : -result < int.MinValue ? int.MinValue : -(int)result;
     }
 }
-

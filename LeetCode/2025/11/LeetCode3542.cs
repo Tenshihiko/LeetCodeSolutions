@@ -1,13 +1,23 @@
-﻿namespace LeetCode3542;
+﻿using LeetCode.Common;
+using Xunit;
+
+namespace LeetCode3542;
+
+[Folder]
+public class Tests
+{
+    [Fact]
+    public void Examples()
+    {
+        var solution = new Solution();
+        var result = solution.MinOperations([4,4]);
+
+        Expect.Check(result);
+    }
+}
 
 public class Solution
 {
-    public void Run()
-    {
-        var result = MinOperations([4,4]);
-
-        Console.WriteLine(result);
-    }
     public int MinOperations(int[] nums)
     {
         var stack = new Stack<int>();
@@ -52,4 +62,3 @@ public class Solution
         return opsCount + stack.Count;
     }
 }
-

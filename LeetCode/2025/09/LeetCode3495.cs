@@ -1,13 +1,22 @@
-﻿namespace LeetCode3495;
+﻿using LeetCode.Common;
+using Xunit;
+
+namespace LeetCode3495;
+
+[Folder]
+public class Tests
+{
+    [Fact]
+    public void Examples()
+    {
+        var solution = new Solution();
+        int[][] param = [[1, 2],[2, 4]];
+        var result = solution.MinOperations(param);
+    }
+}
 
 public class Solution
 {
-    public void Run()
-    {
-        int[][] param = [[1, 2],[2, 4]];
-        var result = MinOperations(param);
-    }
-
     public long MinOperations(int[][] queries)
     {
         var res = 0L;
@@ -54,4 +63,3 @@ public class Solution
         return (ops + 1) / 2;
     }
 }
-

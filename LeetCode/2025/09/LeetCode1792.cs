@@ -1,18 +1,26 @@
-﻿namespace LeetCode1792;
+﻿using LeetCode.Common;
+using Xunit;
+
+namespace LeetCode1792;
+
+[Folder]
+public class Tests
+{
+    [Fact]
+    public void Examples()
+    {
+        var solution = new Solution();
+        int[][] classes = [[2, 4], [3, 9], [4, 5], [2, 10]];
+
+        var result = solution.MaxAverageRatio(classes, 4);
+    }
+}
 
 public class Solution
 {
-    public void Run()
-    {
-        int[][] classes = [[2, 4], [3, 9], [4, 5], [2, 10]];
-
-        var result = MaxAverageRatio(classes, 4);
-    }
-
     public double MaxAverageRatio(int[][] classes, int extraStudents)
     {
         var queue = new PriorityQueue<(int pass, int total, double deltaPassRate), double>();
-
 
         var preparedClasses = classes.Select(c => (
             pass: c[0],
@@ -44,4 +52,3 @@ public class Solution
         return totalPassRate / classes.Length;
     }
 }
-

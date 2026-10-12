@@ -1,18 +1,25 @@
-﻿
+﻿using LeetCode.Common;
+using Xunit;
 
 using System.Text;
 
 namespace LeetCode966;
 
-public class Solution
+[Folder]
+public class Tests
 {
-    public void Run()
+    [Fact]
+    public void Examples()
     {
+        var solution = new Solution();
         string[] wordlist = ["KiTe", "kite", "hare", "Hare"];
         string[] queries = ["kite", "Kite", "KiTe", "Hare", "HARE", "Hear", "hear", "keti", "keet", "keto"];
-        var result = Spellchecker(wordlist, queries);
+        var result = solution.Spellchecker(wordlist, queries);
     }
+}
 
+public class Solution
+{
     public string[] Spellchecker(string[] wordlist, string[] queries)
     {
         var dictionary = PrepareDictionary(wordlist);
@@ -104,4 +111,3 @@ public class Solution
         return "aeiouAEIOU".IndexOf(c) >= 0;
     }
 }
-

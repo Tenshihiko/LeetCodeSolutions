@@ -1,49 +1,32 @@
-﻿namespace LeetCode1912;
+﻿using LeetCode.Common;
+using Xunit;
+
+namespace LeetCode1912;
+
+[Folder]
+public class Tests
+{
+    [Fact]
+    public void Examples()
+    {
+        var system = new Solution.MovieRentingSystem(3, [[0, 1, 5], [0, 2, 6], [0, 3, 7], [1, 1, 4], [1, 2, 7], [2, 1, 5]]);
+        Expect.Equal(new[] { 1, 0, 2 }, system.Search(1));
+        system.Rent(0, 1);
+        system.Rent(1, 2);
+        Expect.Equal(new[] { new[] { 0, 1 }, new[] { 1, 2 } }, system.Report());
+        system.Drop(1, 2);
+        Expect.Equal(new[] { 0, 1 }, system.Search(2));
+    }
+}
 
 public class Solution
 {
-    public void Run()
-    {
-        string[] commands = ["MovieRentingSystem", "search", "rent", "rent", "report", "drop", "search"];
-        var n = 3;
-        int[][] init = [[0, 1, 5], [0, 2, 6], [0, 3, 7], [1, 1, 4], [1, 2, 7], [2, 1, 5]];
-        int[][] parameters = [[],[1], [0, 1], [1, 2], [], [1, 2], [2]];
-
-        var movieRentingSystem = new MovieRentingSystem(n, init);
-
-        for(int i = 1; i < commands.Length; i++)
-        {
-            if (commands[i] == "search")
-            {
-                var res = movieRentingSystem.Search(parameters[i][0]);
-                Console.WriteLine($"[{string.Join(",", res)}]");
-            }
-            else if (commands[i] == "rent")
-            {
-                movieRentingSystem.Rent(parameters[i][0], parameters[i][1]);
-                Console.WriteLine("null");
-            }
-            else if (commands[i] == "drop")
-            {
-                movieRentingSystem.Drop(parameters[i][0], parameters[i][1]);
-                Console.WriteLine("null");
-            }
-            else if (commands[i] == "report")
-            {
-                var res = movieRentingSystem.Report();
-                var formattedRes = res.Select(r => $"[{string.Join(",", r)}]").ToArray();
-                Console.WriteLine($"[{string.Join(",", formattedRes)}]");
-            }
-        }
-    }
-
     public class MovieRentingSystem
     {
         record Movie(int shop, int movie, int price);
         Dictionary<int, int> Prices;
         Dictionary<int, SortedSet<(int shop, int price)>> ShopsForMovies;
         SortedSet<Movie> RentedMovies;
-
 
         public MovieRentingSystem(int n, int[][] entries)
         {
@@ -107,4 +90,3 @@ public class Solution
     }
 
 }
-

@@ -1,13 +1,22 @@
-﻿namespace LeetCode3100;
+﻿using LeetCode.Common;
+using Xunit;
+
+namespace LeetCode3100;
+
+[Folder]
+public class Tests
+{
+    [Fact]
+    public void Examples()
+    {
+        var solution = new Solution();
+        // var param = ...;
+        var result = solution.MaxBottlesDrunk(10, 6);
+    }
+}
 
 public class Solution
 {
-    public void Run()
-    {
-        // var param = ...;
-        var result = MaxBottlesDrunk(10, 6);
-    }
-
     public int MaxBottlesDrunk(int numBottles, int numExchange)
     {
         var drunk = 0;
@@ -37,4 +46,3 @@ public class Solution
         return drunk;
     }
 }
-

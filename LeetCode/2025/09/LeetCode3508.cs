@@ -1,31 +1,23 @@
-﻿namespace LeetCode3508;
+﻿using LeetCode.Common;
+using Xunit;
+
+namespace LeetCode3508;
+
+[Folder]
+public class Tests
+{
+    [Fact]
+    public void Examples()
+    {
+        var router = new Solution.Router(2);
+        Expect.Equal(true, router.AddPacket(2, 5, 1));
+        Expect.Equal(new[] { 2, 5, 1 }, router.ForwardPacket());
+        Expect.Equal(0, router.GetCount(5, 1, 1));
+    }
+}
 
 public class Solution
 {
-    public void Run()
-    {
-        List<string> commands = ["Router", "addPacket", "forwardPacket", "getCount"];
-        List<List<int>> param = [[2], [2, 5, 1], [], [5, 1, 1]];
-
-        var Router = new Router(param[0][0]);
-
-        for (int i = 1; i < commands.Count; i++)
-        {
-            if (commands[i] == "addPacket")
-            {
-                Console.WriteLine(Router.AddPacket(param[i][0], param[i][1], param[i][2]));
-            }
-            else if (commands[i] == "forwardPacket")
-            {
-                var res = Router.ForwardPacket();
-                Console.WriteLine($"[{string.Join(",", res)}]");
-            }
-            else if (commands[i] == "getCount")
-            {
-                Console.WriteLine(Router.GetCount(param[i][0], param[i][1], param[i][2]));
-            }
-        }
-    }
     public class Router
     {
         record Packet(int source, int destination, int timestamp);
@@ -107,4 +99,3 @@ public class Solution
         }
     }
 }
-

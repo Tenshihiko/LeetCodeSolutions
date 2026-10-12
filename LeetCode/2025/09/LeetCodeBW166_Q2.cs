@@ -1,4 +1,20 @@
-﻿namespace LeetCodeBW166_Q2;
+﻿using LeetCode.Common;
+using Xunit;
+
+namespace LeetCodeBW166_Q2;
+
+[Folder]
+public class Tests
+{
+    [Fact]
+    public void Examples()
+    {
+        var solution = new Solution();
+        int[] param = [1, 2, 3, 4];
+        var result = solution.ClimbStairs(param.Length, param);
+        Expect.Check(result);
+    }
+}
 
 public class Solution
 {
@@ -33,13 +49,6 @@ Jump	Cost Calculation	Cost
 1 → 2	costs[2] + (2 - 1)2 = 2 + 1	3
 2 → 4	costs[4] + (4 - 2)2 = 4 + 4	8
 Thus, the minimum total cost is 2 + 3 + 8 = 13©leetcode*/
-    public void Run()
-    {
-        int[] param = [1, 2, 3, 4];
-        var result = ClimbStairs(param.Length, param);
-        Console.WriteLine(result);
-    }
-
     public int ClimbStairs(int n, int[] costs)
     {
         int[] dp = new int[n + 1];
@@ -58,4 +67,3 @@ Thus, the minimum total cost is 2 + 3 + 8 = 13©leetcode*/
         return dp[n];
     }
 }
-
