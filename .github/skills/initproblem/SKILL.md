@@ -7,6 +7,8 @@ description: Initializes a new LeetCode problem solution file. Use when the user
 
 Input: LeetCode problem number (e.g. `/initproblem 2897`).
 
+If the user asks for the Problem of the Day (`/initpotd`, "задача дня", "POTD") without a number, first get it with `pwsh -NoProfile -File .github/skills/initproblem/get-potd.ps1` (the last output line is the number).
+
 ## Steps
 
 Run the script from the solution root (pwsh):
